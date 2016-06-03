@@ -27,10 +27,10 @@
 
       <!--   List containing all the fruits   -->
       <h3>Fruit List</h3>
-      <ul ng-repeat="fruit in fruits">
-        <li>
+      <ul class="list-group" ng-repeat="fruit in fruits">
+        <li class="list-group-item">
           <span ng-bind="fruit.name"></span>
-          <span class="label label-default" ng-bind="fruit.price"></span>
+          <span class="badge" ng-bind="fruit.price | currency: '$'"></span>
         </li>
       </ul>
     </div>
