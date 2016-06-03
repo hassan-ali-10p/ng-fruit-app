@@ -5,8 +5,8 @@
   <title>Document</title>
   <script data-require="angular.js@*" data-semver="1.3.16" src="https://code.angularjs.org/1.3.16/angular.js"></script>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="script.js"></script>
 </head>
 <body ng-app="app">
     <div ng-controller="appCtrl">
@@ -16,13 +16,13 @@
       <form class="form-inline">
         <div class="form-group">
           <label for="name">Fruit Name: </label>
-          <input type="text" id="name" placeholder="Apple" ng-model="name" class="form-control">
+          <input type="text" id="name" placeholder="Apple" ng-model="fruit.name" class="form-control">
         </div>
         <div class="form-group">
           <label for="price">Fruit Price: </label>
-          <input type="text" name="price" ng-model="price" placeholder="23.5" class="form-control">
+          <input type="text" name="price" ng-model="fruit.price" placeholder="23.5" class="form-control">
         </div>
-        <button class="btn btn-primary" type="submit">Add to the Fruit List</button>
+        <button class="btn btn-primary" type="submit" ng-click="addFruit(fruit)">Add to the Fruit List</button>
       </form>
 
       <!--   List containing all the fruits   -->
@@ -30,9 +30,11 @@
       <ul class="list-group" ng-repeat="fruit in fruits">
         <li class="list-group-item">
           <span ng-bind="fruit.name"></span>
-          <span class="badge" ng-bind="fruit.price | currency: '$'"></span>
+          <span class="label label-default" ng-bind="fruit.price | currency: '$'"></span>
+          <button class="btn btn-danger" ng-click="deleteFruit(fruit.id)">Remove</button>
         </li>
       </ul>
+
     </div>
   </body>
 </html>
