@@ -11,6 +11,14 @@
 <body ng-app="app">
     <div ng-controller="appCtrl">
       <h1 ng-bind="menu"></h1>
+
+      <!-- form for searching in fruit list -->
+      <form class="form inline">
+        <div class="form-group">
+          <label for="searchText">Search: </label>
+          <input type="text" class="form-control" id="searchText" placeholder="Enter fruit name" ng-model="searchText">
+        </div>
+      </form>
       
       <!--   form for add a new fruit to list   -->
       <form class="form-inline">
@@ -27,7 +35,7 @@
 
       <!--   List containing all the fruits   -->
       <h3>Fruit List</h3>
-      <ul class="list-group" ng-repeat="fruit in fruits">
+      <ul class="list-group" ng-repeat="fruit in fruits | filter:searchText">
         <li class="list-group-item">
           <span ng-bind="fruit.name"></span>
           <span class="label label-default" ng-bind="fruit.price | currency: '$'"></span>
